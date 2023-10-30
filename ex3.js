@@ -26,16 +26,7 @@ const users = [
   },
   {
     email: "daniel@daniel.com",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Redux",
-      "MongoDB",
-      "Express",
-      "React",
-      "Node",
-    ],
+    skills: ["HTML", "CSS", "JavaScript", "React", "Redux"],
     age: 30,
     isLoggedIn: true,
     points: 50,
@@ -103,11 +94,16 @@ users.forEach(user => {
 
 console.log("🚀 ~ file: ex3.js:85 ~ usersWithMostSkills:", usersWithMostSkills)
 
+// best option:
 const sortedUsers = users.sort((a, b) => b.skills.length - a.skills.length);
-sortedUsers.forEach(sortedUser => sortedUser.skills.length === sortedUser.skills.length)
 const maxSkill = sortedUsers[0].skills.length;
+console.log("🚀 ~ file: ex3.js:99 ~ maxSkill:", maxSkill.name)
+
+// si hipotéticamente hubiese más de un usuario con la misma cantidad máaxima de skills
 const usersMostSkills = sortedUsers.filter(user => user.skills.length === maxSkill);
-console.log("🚀 ~ file: ex3.js:110 ~ usersMostSkills:", usersMostSkills)
+const usersNameMostSkills = usersMostSkills.map(user => user.name);
+console.log("🚀 ~ file: ex3.js:113 ~ usersNameMostSkills:", usersNameMostSkills)
+
 
 
 
@@ -116,7 +112,7 @@ const usersReduce = users.reduce((prevUser, currentUser) => {
   if (prevUser.skills.length > currentUser.skills.length) {
     return prevUser;
   }
-  return  currentUser;
+  return currentUser;
 }, users[0])
 const userWithMostSkills = usersReduce.name;
 console.log("🚀 ~ file: ex3.js:87 ~ userWithMostSkills ~ userWithMostSkills:", userWithMostSkills)
