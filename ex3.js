@@ -78,3 +78,40 @@ const users = [
  * Recorre el array de usuarios y encuentra aquél usuario que tiene más 'skills' de todos.
  * El resultado de tu búsqueda debería ser Asab.
  */
+
+
+let maxSkills = 0;
+let usersWithMostSkills = [];
+
+users.forEach(user => {
+  if (user.skills.length > maxSkills) {
+    maxSkills = user.skills.length;
+    usersWithMostSkills = [user];
+  } else if (user.skills.length === maxSkills) {
+    usersWithMostSkills.push(user);
+  }
+});
+
+console.log("🚀 ~ file: ex3.js:85 ~ usersWithMostSkills:", usersWithMostSkills)
+
+const sortedUsers = users.sort((a, b) => b.skills.length - a.skills.length);
+const userMostSkills = sortedUsers[0].name;
+console.log("🚀 ~ file: ex3.js:85 ~ userMostSkills:", userMostSkills)
+
+const usersReduce = users.reduce((prevUser, currentUser) => {
+  if (prevUser.skills.length > currentUser.skills.length) {
+    return prevUser;
+  }
+  return  currentUser;
+}, users[0])
+const userWithMostSkills = usersReduce.name;
+console.log("🚀 ~ file: ex3.js:87 ~ userWithMostSkills ~ userWithMostSkills:", userWithMostSkills)
+
+// const userMaxSkills = users.filter(user => {
+//   return user.skills.length
+// })
+// console.log("🚀 ~ file: ex3.js:87 ~ userMaxSkills ~ userMaxSkills:", users[0].skills.length)
+
+// for (let i in users) {
+
+// }
