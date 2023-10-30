@@ -7,20 +7,20 @@
 
 <body>
 
-    <form action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+    <form action="#" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
         <h2 class="w3-center">Contact Us</h2>
 
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+                <input class="w3-input w3-border" id="first-name" name="first" type="text" placeholder="First Name">
             </div>
         </div>
 
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="last" type="text" placeholder="Last Name">
+                <input class="w3-input w3-border" id="last-name" name="last" type="text" placeholder="Last Name">
             </div>
         </div>
 
@@ -49,7 +49,7 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge"></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border" name="greetings" type="text" placeholder="" disabled>
+                <input class="w3-input w3-border" id="greetings" name="greetings" type="text" placeholder="" disabled>
             </div>
         </div>
 
@@ -67,8 +67,18 @@
     // Al hacer clic en el botón de submit:
     
     // 1. Guarda en una variable  el valor del campo de First Name
-    //  2. Guarda en otra variable el valor del campo de Last Name
-    // 3. Modifica el valor del último input con un mensaje saludando a la persona. Algo así como "Hello First Name Second Name!";
+
+    document.querySelector("form").addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        const firstName = document.querySelector('#first-name').value;
+        firstName.value = '';
+        //  2. Guarda en otra variable el valor del campo de Last Name
+        const lastName = document.querySelector('#last-name').value;
+        lastName.value = '';
+        // 3. Modifica el valor del último input con un mensaje saludando a la persona. Algo así como "Hello First Name Second Name!";
+        document.querySelector('#greetings').placeholder = `Hello ${firstName} ${lastName}!`;
+    })
 
     // Resultado esperado: https://oscarm.tinytake.com/msc/ODg2NDk2M18yMjMxMjEwOA
 
